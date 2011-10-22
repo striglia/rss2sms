@@ -1,4 +1,4 @@
-import util.twilio_sms as twilio_sms
+from twilio.rest import TwilioRestClient
 import tinyurl
 from subprocess import call
 from optparse import OptionParser
