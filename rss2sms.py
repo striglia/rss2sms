@@ -1,3 +1,5 @@
+# rss2sms.py Takes an RSS feed and sends sms alerts as new items are added to it
+# http://github.com/striglia/rss2sms
 from twilio.rest import TwilioRestClient
 import tinyurl
 from subprocess import call
