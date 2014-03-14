@@ -4,7 +4,7 @@ Takes an RSS feed and sends sms alerts as new items are added to it
 
 ## Usage
 
-Usage: rss2sms.py [options]
+Usage: rss2sms [options]
 
     Options:
       -h, --help            show this help message and exit
@@ -35,13 +35,13 @@ You also need to obtain the URL to an RSS/Atom feed that you want to monitor
 
 ## Examples
 
-    python rss2sms.py --url="http://my.site.com/rss-feed" --to=+4712345678 -c mycache.txt
+    rss2sms --url="http://my.site.com/rss-feed" --to=+4712345678 -c mycache.txt
     
     #Enter from-number on the cmdline:
-    python rss2sms.py --url="http://my.site.com/rss-feed" --to=+4712345678 --from=+198765443 -c mycache.txt
+    rss2sms --url="http://my.site.com/rss-feed" --to=+4712345678 --from=+198765443 -c mycache.txt
     
     # Send another RSS field than the title
-    python rss2sms.py --url="http://my.site.com/rss-feed" --to=+4712345678 --display=link
+    rss2sms --url="http://my.site.com/rss-feed" --to=+4712345678 --display=link
     
     # If your RSS uses another field name for the URL than 'link':
-    python rss2sms.py --url="http://my.site.com/rss-feed" --to=+4712345678 --id=id
+    rss2sms --url="http://my.site.com/rss-feed" --to=+4712345678 --id=id
