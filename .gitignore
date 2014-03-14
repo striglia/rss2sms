@@ -1,1 +1,3 @@
-tags
+*pyc
+dist/
+rss2sms.egg-info/
