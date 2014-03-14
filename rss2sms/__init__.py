@@ -11,6 +11,9 @@ import sys
 import time
 import calendar
 
+
+__version__ = '0.0.1'
+
 class Rss2Sms():
 
     def __init__(self, rss_url=None, to_num=None, cache_filename=None, from_num=None, rss_id_field=None, rss_display_field=None):
@@ -99,7 +102,7 @@ class Rss2Sms():
         """Saves the last seen post to file together with its timestamp."""
         with open(self.cache_filename,'w') as cache_file:
             json.dump([self.get_post_timestamp(post),post[self.rss_id_field]], cache_file)
-    
+
     def get_post_timestamp(self, post):
         updated = post['updated_parsed']
         return calendar.timegm(updated)
