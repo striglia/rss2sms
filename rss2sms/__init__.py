@@ -107,7 +107,7 @@ class Rss2Sms():
         updated = post['updated_parsed']
         return calendar.timegm(updated)
 
-if __name__=='__main__':
+def main():
     parser = OptionParser()
     parser.add_option("-u", "--url", dest="rss_url",
                             help="url of rss feed")

@@ -46,6 +46,13 @@ setup(
 
     packages=find_packages(exclude=["tests*"]),
     install_requires=[
-        'foo',
+        'feedparser',
+        'tinyurl',
+        'twilio',
     ],
+    entry_points={
+        'console_scripts': [
+            'rss2sms=rss2sms:main',
+        ],
+    },
 )
