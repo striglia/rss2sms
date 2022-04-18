@@ -114,7 +114,7 @@ def main():
     parser.add_option("-t", "--to", dest="to_num",
                             help="cell number to send sms alerts to")
     parser.add_option("-f", "--from", dest="from_num",
-                            help="cell number to send sms alerts to (overrides environment variable TWILIO_NUMBER)")
+                            help="cell number to send sms alerts from (overrides environment variable TWILIO_NUMBER)")
     parser.add_option("-i", "--id", dest="rss_id_field",
                             help="unique id rss field used for display in SMS and for equality comparison (defaults to 'link')")
     parser.add_option("-d", "--display", dest="rss_display_field",
