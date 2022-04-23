@@ -13,7 +13,7 @@ Usage: rss2sms [options]
       -t TO_NUM, --to=TO_NUM
                             cell number to send sms alerts to
       -f FROM_NUM, --from=FROM_NUM
-                            cell number to send sms alerts to (overrides
+                            cell number to send sms alerts from (overrides
                             environment variable TWILIO_NUMBER)
       -i RSS_ID_FIELD, --id=RSS_ID_FIELD
                             unique id rss field used for display in SMS and for
