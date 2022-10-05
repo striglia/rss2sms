@@ -1,6 +1,6 @@
 # rss2sms.py Takes an RSS feed and sends sms alerts as new items are added to it
 # http://github.com/striglia/rss2sms
-from twilio.rest import TwilioRestClient
+from twilio.rest import Client
 from subprocess import call
 from optparse import OptionParser
 import feedparser
@@ -36,7 +36,7 @@ class Rss2Sms():
         # Set up twilio client for sending text messages
         account = os.environ.get('TWILIO_ACCT')
         token = os.environ.get('TWILIO_TOKEN')
-        self.twilio_client = TwilioRestClient(account, token)
+        self.twilio_client = Client(account, token)
 
         self.load_last_post()
 
