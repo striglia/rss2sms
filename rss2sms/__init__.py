@@ -72,8 +72,8 @@ class Rss2Sms():
         for post in item_list:
             if self.last_post is None or self.is_new_post(post):
                 # Set text body
-                tiny_url = tinyurl.create_one(str(post[self.rss_id_field]))
-                text_body = u' '.join((post[self.rss_display_field], tiny_url)).encode('utf-8').strip()
+                url = str(post[self.rss_id_field])
+                text_body = u' '.join((post[self.rss_display_field], url)).encode('utf-8').strip()
                 self.send_sms(text_body)
                 print 'Sent text for %s' % tiny_url
             break
