@@ -1,7 +1,6 @@
 # rss2sms.py Takes an RSS feed and sends sms alerts as new items are added to it
 # http://github.com/striglia/rss2sms
 from twilio.rest import TwilioRestClient
-import tinyurl
 from subprocess import call
 from optparse import OptionParser
 import feedparser
@@ -68,14 +67,14 @@ class Rss2Sms():
         item_list = list(reversed(self.parsed_feed['items'][:cutoff]))
         if len(item_list) == 0:
             return
-        print '%d posts to send alerts for' % len(item_list)
+        print('%d posts to send alerts for' % len(item_list))
         for post in item_list:
             if self.last_post is None or self.is_new_post(post):
                 # Set text body
                 url = str(post[self.rss_id_field])
                 text_body = u' '.join((post[self.rss_display_field], url)).encode('utf-8').strip()
                 self.send_sms(text_body)
-                print 'Sent text for %s' % tiny_url
+                print('Sent text for %s' % url)
             break
         self.set_last_post(post)
 
