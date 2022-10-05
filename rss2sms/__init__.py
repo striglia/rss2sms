@@ -80,7 +80,7 @@ class Rss2Sms():
 
     def send_sms(self, body):
         """Sends an sms to all numbers in self.sms_numbers with body as the content."""
-        message = self.twilio_client.sms.messages.create(to=self.to_num, from_=self.from_num, body=body)
+        message = self.twilio_client.messages.create(to=self.to_num, from_=self.from_num, body=body)
 
     def is_new_post(self, post):
         """Compares post id with self.last_post for equality, and also timestamp."""
