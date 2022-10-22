@@ -47,7 +47,6 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     install_requires=[
         'feedparser',
-        'tinyurl',
         'twilio',
     ],
     entry_points={

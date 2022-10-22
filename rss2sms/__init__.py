@@ -1,7 +1,6 @@
 # rss2sms.py Takes an RSS feed and sends sms alerts as new items are added to it
 # http://github.com/striglia/rss2sms
-from twilio.rest import TwilioRestClient
-import tinyurl
+from twilio.rest import Client
 from subprocess import call
 from optparse import OptionParser
 import feedparser
@@ -37,7 +36,7 @@ class Rss2Sms():
         # Set up twilio client for sending text messages
         account = os.environ.get('TWILIO_ACCT')
         token = os.environ.get('TWILIO_TOKEN')
-        self.twilio_client = TwilioRestClient(account, token)
+        self.twilio_client = Client(account, token)
 
         self.load_last_post()
 
@@ -68,20 +67,20 @@ class Rss2Sms():
         item_list = list(reversed(self.parsed_feed['items'][:cutoff]))
         if len(item_list) == 0:
             return
-        print '%d posts to send alerts for' % len(item_list)
+        print('%d posts to send alerts for' % len(item_list))
         for post in item_list:
             if self.last_post is None or self.is_new_post(post):
                 # Set text body
-                tiny_url = tinyurl.create_one(str(post[self.rss_id_field]))
-                text_body = u' '.join((post[self.rss_display_field], tiny_url)).encode('utf-8').strip()
+                url = str(post[self.rss_id_field])
+                text_body = u' '.join((post[self.rss_display_field], url)).encode('utf-8').strip()
                 self.send_sms(text_body)
-                print 'Sent text for %s' % tiny_url
+                print('Sent text for %s' % url)
             break
         self.set_last_post(post)
 
     def send_sms(self, body):
         """Sends an sms to all numbers in self.sms_numbers with body as the content."""
-        message = self.twilio_client.sms.messages.create(to=self.to_num, from_=self.from_num, body=body)
+        message = self.twilio_client.messages.create(to=self.to_num, from_=self.from_num, body=body)
 
     def is_new_post(self, post):
         """Compares post id with self.last_post for equality, and also timestamp."""
